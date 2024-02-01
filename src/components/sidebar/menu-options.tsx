@@ -110,9 +110,9 @@ const MenuOptions = ({
                   <Compass />
                   <div className="flex flex-col">
                     {details.name}
-                    <span className="text-muted-foreground">
+                    {/* <span className="text-muted-foreground">
                       {details.address}
-                    </span>
+                    </span> */}
                   </div>
                 </div>
                 <div>

@@ -1,15 +1,18 @@
 import { ModeToggle } from '@/components/global/mode-toggle'
 import { UserButton } from '@clerk/nextjs'
 import { User } from '@clerk/nextjs/server'
+import { getAuthUserDetails } from '@/lib/queries'
 import Image from 'next/image'
 import Link from 'next/link'
+import clsx from 'clsx'
 import React from 'react'
 
 type Props = {
   user?: null | User
 }
 
-const Navigation = ({ user }: Props) => {
+const Navigation = async ({ user }: Props) => {
+  const userInfo = await getAuthUserDetails();
   return (
     <div className="fixed top-0 right-0 left-0 p-4 flex items-center justify-between z-10">
       <aside className="flex items-center gap-2">
@@ -32,9 +35,11 @@ const Navigation = ({ user }: Props) => {
       <aside className="flex gap-2 items-center">
         <Link
           href={'/agency'}
-          className="bg-primary text-white p-2 px-4 rounded-md hover:bg-primary/80"
+          className={clsx('text-white p-2 px-4', {
+            'bg-primary rounded-md hover:bg-primary/80': !userInfo
+          })}
         >
-          Login
+          {userInfo ? 'Dashboard' : 'Login'}
         </Link>
         <UserButton />
         <ModeToggle />

@@ -221,7 +221,6 @@ export const initUser = async (newUser: Partial<User>) => {
       id: user.id,
       avatarUrl: user.imageUrl,
       email: user.emailAddresses[0].emailAddress,
-      mobile: user.phoneNumbers[0].phoneNumber,
       name: `${user.firstName} ${user.lastName}`,
       role: newUser.role || 'SUBACCOUNT_USER',
     },

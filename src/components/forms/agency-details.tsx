@@ -64,7 +64,7 @@ const FormSchema = z.object({
   zipCode: z.string().min(1),
   state: z.string().min(1),
   country: z.string().min(1),
-  // agencyLogo: z.string().min(1),
+  agencyLogo: z.string().min(1),
 })
 
 const AgencyDetails = ({ data }: Props) => {
